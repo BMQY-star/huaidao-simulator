@@ -345,7 +345,7 @@
   }
   .dashboard-shell {
     min-height: 100vh;
-    padding: 16px 20px;
+    padding: 12px;
     background: radial-gradient(circle at 15% 15%, rgba(30, 64, 175, 0.12), transparent 45%),
       radial-gradient(circle at 85% 5%, rgba(180, 83, 9, 0.14), transparent 50%),
       linear-gradient(160deg, #f8f4ec 0%, #edf2f0 60%, #f5efe6 100%);
@@ -356,9 +356,8 @@
   }
 
   .dashboard-layout {
-    width: min(1440px, 100%);
+    width: min(1840px, 100%);
     height: calc(100vh - 24px);
-    min-height: 920px;
     margin: 0 auto;
     display: flex;
     gap: 12px;
@@ -379,7 +378,7 @@
 
   .dashboard-board {
     display: grid;
-    grid-template-columns: 260px minmax(0, 1fr);
+    grid-template-columns: clamp(260px, 19vw, 320px) minmax(0, 1fr);
     gap: 10px;
     padding: 12px;
     height: 100%;
@@ -403,6 +402,9 @@
     border: 1px solid rgba(148, 163, 184, 0.2);
     padding: 12px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
   }
 
   .dashboard-right {
@@ -414,7 +416,7 @@
     flex-direction: column;
     gap: 10px;
     overflow: hidden;
-    width: 260px;
+    width: clamp(260px, 19vw, 320px);
     height: 100%;
   }
 
@@ -1355,7 +1357,14 @@
     list-style-position: inside;
   }
 
-  .research-shell,
+  .research-shell {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+
   .equipment-shell {
     margin-top: 10px;
   }
@@ -1368,12 +1377,38 @@
     flex-wrap: wrap;
   }
 
-  .research-grid,
+  .research-grid {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-height: 0;
+  }
+
   .equipment-grid {
     margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 10px;
+  }
+
+  .research-shell .research-card {
+    padding: 12px;
+  }
+
+  .project-list-card {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-list-card .project-list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 6px;
   }
 
   .research-card,

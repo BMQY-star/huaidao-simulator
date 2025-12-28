@@ -1445,18 +1445,6 @@ function App() {
     return pendingDecisions[0];
   }, [pendingDecisions, activeDecisionId]);
 
-  const paperSummary = useMemo(
-    () =>
-      teamMembers.reduce(
-        (acc, student) => ({
-          pending: acc.pending + student.pendingPapers,
-          published: acc.published + student.totalPapers,
-        }),
-        { pending: 0, published: 0 },
-      ),
-    [teamMembers],
-  );
-
   const projectPaperSummary = useMemo(
     () =>
       projectPapers.reduce(
@@ -3169,7 +3157,7 @@ function App() {
                   </button>
                 </div>
                 <div className="research-grid">
-                  <div className="research-card">
+                  <div className="research-card grant-card">
                     <h4>国自然 / 国社科</h4>
                     <div className="grant-list">
                       {grantRules.map((rule) => {
@@ -3201,15 +3189,7 @@ function App() {
                       })}
                     </div>
                   </div>
-                  <div className="research-card">
-                    <h4>论文产出</h4>
-                    <div className="student-meta paper-meta">
-                      <span>在投 {paperSummary.pending}</span>
-                      <span>发表 {paperSummary.published}</span>
-                    </div>
-                    <p className="muted-text">提示：论文进度会在季度结算时自动推进；满 100 将自动投稿。</p>
-                  </div>
-                  <div className="research-card">
+                  <div className="research-card project-paper-card">
                     <h4>课题论文</h4>
                     <div className="student-meta paper-meta">
                       <span>待选 {projectPaperSummary.awaitingVenue}</span>
@@ -3263,7 +3243,7 @@ function App() {
                       <p className="muted-text">暂无课题论文，结题后自动生成投稿流程。</p>
                     )}
                   </div>
-                  <div className="research-card">
+                  <div className="research-card project-list-card">
                     <h4>课题列表</h4>
                     {projects.length ? (
                       <div className="project-list">
@@ -3343,7 +3323,7 @@ function App() {
                       <p className="muted-text">暂无课题，点击上方按钮创建。</p>
                     )}
                   </div>
-                  <div className="research-card">
+                  <div className="research-card project-create-card">
                     <h4>课题创建</h4>
                     <div className="project-form">
                       <label className="field">
